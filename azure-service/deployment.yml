@@ -19,6 +19,7 @@ spec:
         app: azuremicroservice
       annotations:
         linkerd.io/inject: enabled
+        mirror.linkerd.io/exported: "true"
     spec:
       containers:
         - name: azuremicroservice
