@@ -20,10 +20,10 @@ spec:
           image: rajeevramani/nutanix-api:v1
           resources:
             requests:
-              memory: "500Mi"
+              memory: "64Mi"
               cpu: "250m"
             limits:
-              memory: "200Mi"
+              memory: "128Mi"
               cpu: "500m"
           ports:
             - containerPort: 80
