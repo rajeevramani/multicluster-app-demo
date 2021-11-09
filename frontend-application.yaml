@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    path: nutanix-service
+    path: frontend
     repoURL: 'https://github.com/rajeevramani/multicluster-app-demo.git'
     targetRevision: HEAD
 

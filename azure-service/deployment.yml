@@ -18,6 +18,13 @@ spec:
       containers:
         - name: azuremicroservice
           image: rajeevramani/azure-api:v1
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "200Mi"
+              cpu: "500m"
           ports:
             - containerPort: 80
       # imagePullSecrets:

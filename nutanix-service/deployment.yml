@@ -18,6 +18,13 @@ spec:
       containers:
         - name: nutanixmicroservice
           image: rajeevramani/nutanix-api:v1
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "200Mi"
+              cpu: "500m"
           ports:
             - containerPort: 80
       # imagePullSecrets:
@@ -29,7 +36,6 @@ metadata:
   name: nutanixmicroservice
   namespace: ntnx-test-1
 spec:
-  type: LoadBalancer
   ports:
     - port: 80
   selector:
