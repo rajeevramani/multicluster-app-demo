@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azuremicroservice
+  namespace: ntnx-test-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azuremicroservice
+  template:
+    metadata:
+      labels:
+        app: azuremicroservice
+      annotations:
+        linkerd.io/inject: enabled
+    spec:
+      containers:
+        - name: azuremicroservice
+          image: rajeevramani/azure-api:v1
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azuremicroservice
+  namespace: ntnx-test-1
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: azuremicroservice
