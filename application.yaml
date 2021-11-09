@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: Multicluster
+  name: multicluster-demo-app
 spec:
   destination:
     name: ''
