@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: multicluster-demo-app
+  name: nutanix-microservice
   namespace: argocd
 spec:
   project: default

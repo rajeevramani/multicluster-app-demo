@@ -1,19 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: azure-application
+  name: azure-microservice
+  namespace: argocd
 spec:
-  destination:
-    namespace: ntnx-test-1
-    server: 'https://rrazuredev-azuredevops-f3ce23-420ed21e.hcp.eastus.azmk8s.io:443'
+  project: default
   source:
     path: azure-service
-    repoURL: 'https://github.com/rajeevramani/multicluster-app-demo.git'
+    repoURL: "https://github.com/rajeevramani/multicluster-app-demo.git"
     targetRevision: HEAD
-  project: default
+    
+  destination:
+    namespace: ntnx-test-1
+    server: "https://rrazuredev-azuredevops-f3ce23-420ed21e.hcp.eastus.azmk8s.io:443"
+  
+  
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
