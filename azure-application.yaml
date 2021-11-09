@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: azure-application
+spec:
+  destination:
+    namespace: ntnx-test-1
+    server: 'https://rrazuredev-azuredevops-f3ce23-420ed21e.hcp.eastus.azmk8s.io:443'
+  source:
+    path: azure-service
+    repoURL: 'https://github.com/rajeevramani/multicluster-app-demo.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

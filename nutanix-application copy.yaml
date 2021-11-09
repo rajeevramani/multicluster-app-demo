@@ -2,18 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: multicluster-demo-app
+  namespace: argocd
 spec:
-  destination:
-    name: ''
-    namespace: ntnx-test-1
-    server: 'https://10.42.49.45:443'
+  project: default
   source:
-    path: nutanix-microservice
+    path: nutanix-service
     repoURL: 'https://github.com/rajeevramani/multicluster-app-demo.git'
     targetRevision: HEAD
-    directory:
-      recurse: false
-  project: default
+
+  destination:
+    namespace: ntnx-test-1
+    server: 'https://10.42.49.45:443'
+  
+  
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
